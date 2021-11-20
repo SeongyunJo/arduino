@@ -1,0 +1,26 @@
+#include<SoftwareSerial.h>
+SoftwareSerial SWserial(8,12);
+
+int motor1 = 5;
+int motor2 = 6;
+
+void setup(){
+SWserial.begin(9600);
+analogWrite(motor1, 0);
+analogWrite(motor2, 0);
+}
+
+void loop(){
+if(SWserial.available()>0){
+int data = SWserial.read();
+if(data == '1'){
+analogWrite(motor1, 200);
+}else if(data == '2'){
+analogWrite(motor1, 0);
+}else if(data == '3'){
+analogWrite(motor2, 200);
+}else if(data == '4'){
+analogWrite(motor2, 0);
+}
+}
+}
