@@ -1,0 +1,31 @@
+#include<SoftwareSerial.h>
+
+SoftwareSerial SWserial(3,2);
+int motor = 11;
+
+void setup(){
+SWserial.begin(9600);
+}
+
+void loop(){
+if(SWserial.available()>0){
+
+int data = SWserial.read();
+
+if(data == 'b'){
+analogWrite(motor, 50);
+}else if(data == 'w'){
+analogWrite(motor, 120);
+}else if(data == 'c'){
+analogWrite(motor, 254);
+}else if(data == 's'){
+analogWrite(motor, 0);
+}else if(data == 'd'){
+analogWrite(motor, 20);
+}else if(data == 'e'){
+analogWrite(motor, 10);
+}else if(data == 'f'){
+analogWrite(motor, 5);
+}
+}
+}
